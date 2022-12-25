@@ -1,10 +1,21 @@
-import { getPreferenceValues, OAuth, showToast, Toast, confirmAlert } from "@raycast/api";
-import { Imgur } from "./hooks/urls";
+import {
+  getPreferenceValues,
+  OAuth,
+  showToast,
+  Toast,
+  confirmAlert,
+  Form,
+  Action,
+  Clipboard,
+  open,
+} from "@raycast/api";
+import { Imgur, Raycast } from "./hooks/urls";
 import { FormScreen, GlobalPreference } from "./screens/form";
 import { createReadStream } from "fs";
 import { Source } from "./hooks/cache";
 import FormData from "form-data";
 import { Axios, AxiosResponse } from "axios";
+import { Fragment } from "react";
 
 type Prefrences = {
   clientId: string;
@@ -68,8 +79,7 @@ const client = new OAuth.PKCEClient({
   redirectMethod: OAuth.RedirectMethod.Web,
   providerName: "Imgur",
   providerIcon: "command-icon.png",
-  description:
-    'Connect your Imgur account... Ensure that you have set Imgur\'s application Redirect(callback url) to "https://raycast.com/redirect?packageName=Extension"',
+  description: `Connect your Imgur account... Ensure that you have set Imgur's application Redirect(callback url) to <${Raycast.OAuthCallack}>`,
 });
 
 const refreshTokens = async (refreshToken: string) => {
@@ -189,5 +199,41 @@ export default function Command() {
     return await execUpload(tokenSet.accessToken);
   };
 
-  return <FormScreen source={Source.SMMS} onUpload={handleUpload} />;
+  return (
+    <FormScreen
+      source={Source.SMMS}
+      onUpload={handleUpload}
+      formItems={() => (
+        <Fragment>
+          <Form.Separator />
+          <Form.Description title={"Important"} text={`Here is the steps to prepare for sign in Imgur.`} />
+          <Form.Description text={`1. [⌥ + ⌘ + c] to copy Redirect url.`} />
+          <Form.Description text={`2. [⌥ + ⌘ + o] to open Imgur App settings page.`} />
+          <Form.Description text={`3. Edit Redirect and Paste link into Input and save.`} />
+        </Fragment>
+      )}
+      actions={() => (
+        <Fragment>
+          <Action
+            title="Copy Ridirect Url"
+            shortcut={{
+              modifiers: ["opt", "cmd"],
+              key: "c",
+            }}
+            onAction={() => Clipboard.copy(Raycast.OAuthCallack)}
+          />
+          <Action
+            title="Open Imgur App Settings"
+            shortcut={{
+              modifiers: ["opt", "cmd"],
+              key: "o",
+            }}
+            onAction={() => {
+              open(Imgur.AppSettingsPage);
+            }}
+          />
+        </Fragment>
+      )}
+    />
+  );
 }

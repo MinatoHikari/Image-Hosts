@@ -1,5 +1,5 @@
 import { Form, ActionPanel, Action, useNavigation, Clipboard, showToast, Toast } from "@raycast/api";
-import { useRef, useState } from "react";
+import React, { ReactNode, useRef, useState } from "react";
 import { Source, useCache } from "../hooks/cache";
 import { GridScreen } from "./grid";
 
@@ -11,9 +11,14 @@ export type GlobalPreference = {
   proxy: string;
 };
 
-export function FormScreen(props: { source: Source; onUpload: (filePath: string) => Promise<{ url: string }> }) {
+export function FormScreen(props: {
+  source: Source;
+  onUpload: (filePath: string) => Promise<{ url: string }>;
+  formItems?: () => ReactNode;
+  actions?: () => ReactNode;
+}) {
   const { push } = useNavigation();
-  const { onUpload, source } = props;
+  const { onUpload, source, formItems, actions } = props;
 
   const toGrid = () => {
     push(<GridScreen />);
@@ -36,7 +41,6 @@ export function FormScreen(props: { source: Source; onUpload: (filePath: string)
           filePickerRef.current?.reset();
           addImage(url, source);
           showToast({ title: "Succesfully Uploaded" });
-          toGrid();
         })
         .catch((err) => {
           showToast({ title: "Upload Failed", message: err, style: Toast.Style.Failure });
@@ -62,6 +66,7 @@ export function FormScreen(props: { source: Source; onUpload: (filePath: string)
               key: "tab",
             }}
           />
+          {actions && actions()}
         </ActionPanel>
       }
     >
@@ -72,6 +77,7 @@ export function FormScreen(props: { source: Source; onUpload: (filePath: string)
         title="Image"
         allowMultipleSelection={false}
       />
+      {formItems && formItems()}
     </Form>
   );
 }

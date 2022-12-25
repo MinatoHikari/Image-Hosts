@@ -10,7 +10,7 @@ type Prefrences = {
   userhash: string;
 } & GlobalPreference;
 
-export default async function Command() {
+export default function Command() {
   const { userhash } = getPreferenceValues<Prefrences>();
 
   const handleUpload = async (filePath: string) => {
