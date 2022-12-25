@@ -1,0 +1,170 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "image-hosts",
+  "title": "Image Hosts",
+  "description": "Provide an easy way to upload and share your files with public image hosts",
+  "icon": "command-icon.png",
+  "author": "MinatoHikari",
+  "categories": [
+    "Media"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "album",
+      "title": "Album",
+      "subtitle": "Image",
+      "description": "Check images uploaded before",
+      "mode": "view"
+    },
+    {
+      "name": "catbox",
+      "title": "Catbox",
+      "subtitle": "Image",
+      "description": "Upload and share images with catbox",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "userhash",
+          "type": "textfield",
+          "title": "Userhash",
+          "description": "Userhash for catbox",
+          "placeholder": "Get userhash from https://catbox.moe/",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "imgur",
+      "title": "Imgur",
+      "subtitle": "Image",
+      "description": "Upload and share images with Imgur",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "clientId",
+          "type": "textfield",
+          "title": "Client ID",
+          "description": "Client ID for Imgur",
+          "placeholder": "Get Client ID from https://imgur.com/",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "textfield",
+          "title": "Client Secret",
+          "description": "Client Secret for Imgur",
+          "placeholder": "Get Client Secret from https://imgur.com/",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "chevereto",
+      "title": "Chevereto",
+      "subtitle": "Image",
+      "description": "Upload and share images with Chevereto",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "key",
+          "type": "textfield",
+          "title": "API KEY",
+          "description": "API KEY for Chevereto Sites",
+          "placeholder": "Get API Key from Chevereto Sites",
+          "required": true
+        },
+        {
+          "name": "hostname",
+          "type": "textfield",
+          "title": "Host",
+          "description": "Host of Chevereto Site",
+          "placeholder": "Enter Host of Chevereto Site (e.g https://aaa.com)",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "smms",
+      "title": "SM.MS",
+      "subtitle": "Image",
+      "description": "Upload and share images with SM.MS",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "token",
+          "type": "textfield",
+          "title": "Secret Token",
+          "description": "Authorization API token for SM.MS",
+          "placeholder": "Get token from https://sm.ms/",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "imgurl",
+      "title": "ImgURL",
+      "subtitle": "Image",
+      "description": "Upload and share images with ImgURL",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "token",
+          "type": "textfield",
+          "title": "Secret Token",
+          "description": "API token for ImgURL",
+          "placeholder": "Get token from ImgURL sites",
+          "required": true
+        },
+        {
+          "name": "uid",
+          "type": "textfield",
+          "title": "UID",
+          "description": "UID for ImgUR sites",
+          "placeholder": "Get token from ImgURL sites",
+          "required": true
+        },
+        {
+          "name": "hostname",
+          "type": "textfield",
+          "title": "Server Host",
+          "description": "Custom hostname if you don't use official server",
+          "placeholder": "Host of a ImgURL site (e.g https://aaa.com)",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "proxy",
+      "title": "Proxy",
+      "description": "Global Proxy Settings for All Commands (e.g http://127.0.0.1:7890)",
+      "type": "textfield",
+      "required": false
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.45.2",
+    "@raycast/utils": "^1.4.14",
+    "axios": "^1.2.1",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.8.3",
+    "@types/react": "18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "ray publish"
+  }
+}
