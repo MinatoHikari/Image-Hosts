@@ -13,14 +13,14 @@
     {
       "name": "album",
       "title": "Album",
-      "subtitle": "Image",
+      "subtitle": "Image Hosts",
       "description": "Check images uploaded before",
       "mode": "view"
     },
     {
       "name": "catbox",
       "title": "Catbox",
-      "subtitle": "Image",
+      "subtitle": "Image Hosts",
       "description": "Upload and share images with catbox",
       "mode": "view",
       "preferences": [
@@ -37,7 +37,7 @@
     {
       "name": "imgur",
       "title": "Imgur",
-      "subtitle": "Image",
+      "subtitle": "Image Hosts",
       "description": "Upload and share images with Imgur",
       "mode": "view",
       "preferences": [
@@ -62,7 +62,7 @@
     {
       "name": "chevereto",
       "title": "Chevereto",
-      "subtitle": "Image",
+      "subtitle": "Image Hosts",
       "description": "Upload and share images with Chevereto",
       "mode": "view",
       "preferences": [
@@ -87,7 +87,7 @@
     {
       "name": "smms",
       "title": "SM.MS",
-      "subtitle": "Image",
+      "subtitle": "Image Hosts",
       "description": "Upload and share images with SM.MS",
       "mode": "view",
       "preferences": [
@@ -104,7 +104,7 @@
     {
       "name": "lskypro",
       "title": "Lsky Pro",
-      "subtitle": "Image",
+      "subtitle": "Image Hosts",
       "description": "Upload and share images with Lsky Pro Sites",
       "mode": "view",
       "preferences": [
@@ -129,7 +129,7 @@
     {
       "name": "imgurl",
       "title": "ImgURL",
-      "subtitle": "Image",
+      "subtitle": "Image Hosts",
       "description": "Upload and share images with ImgURL",
       "mode": "view",
       "preferences": [
